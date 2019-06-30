@@ -2,6 +2,7 @@ import datetime
 
 import twder
 import openpyxl
+import numpy as np
 import xlwings as xw
 
 
@@ -10,6 +11,7 @@ class injector:
     def __init__(self, excel_path, items):
         self.excel_path = excel_path
         self.items = items
+        self.book = xw.Book(self.excel_path)
 
     def inject_data():
         pass
@@ -21,20 +23,30 @@ class twderinjector(injector):
     def _set_sheet_header(self, sheet):
         sheet.range("A1:E1").value = list(twderinjector.COLUME_NAME)
 
-    def _currency_to_excel(self, currency, book):
+    def _currency_to_excel(self, currency):
         currency_data = twder.now(currency)
+        sheet = self._get_sheet(currency)
+        last_row = sheet.range("A1").end("down").row
+        sheet.range((last_row+1, 1)).value = currency_data
+
+    def _get_sheet(self, sheet_name):
         try:
-            # 若有該試算表，就開啓它，並且寫入資料
-            sheet = book.sheets[currency]
+            sheet = self.book.sheets[sheet_name]
             sheet.activate()
         except:
-            sheet = book.sheets.add(name=currency, after=book.sheets[-1])
+            sheet = self.book.sheets.add(name=sheet_name, after=self.book.sheets[-1])
             self._set_sheet_header(sheet)
-        finally:
-            last_row = sheet.range("A1").end("down").row
-            sheet.range((last_row+1, 1)).value = currency_data
+        return sheet
+
 
     def inject_data(self):
         currencies = self.items
-        book = xw.Book(self.excel_path)
-        [ self._currency_to_excel(currency, book) for currency in currencies ]
+        [ self._currency_to_excel(currency) for currency in currencies ]
+
+    def inject_sixmonth_data(self, currency):
+        data = twder.past_six_month(currency)
+        data = np.asarray(data)
+        sheet = self._get_sheet(currency + '_six_month')
+        sheet.range((2,1)).value = data
+
+

@@ -1,0 +1,6 @@
+*/__pycache__/
+lib/mycurrency/__pycache__
+*.swp
+*.xlsx
+tests/*.xlsx
+*.config

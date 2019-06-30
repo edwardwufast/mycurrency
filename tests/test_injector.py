@@ -14,3 +14,8 @@ def test_inject_data(workbook):
 
     injector = twderinjector(excel_path, items)
     injector.inject_data()
+
+def test_inject_sixmonth_data(workbook):
+
+    injector = twderinjector(excel_path, items)
+    injector.inject_sixmonth_data('JPY')
