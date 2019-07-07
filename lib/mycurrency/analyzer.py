@@ -47,7 +47,7 @@ class analyzer:
             report['min_price'] = df['現金賣出'].min()
             report['min_price_of_month'] = df['現金賣出'][-30:].min()
             report['max_price_of_month'] = df['現金賣出'][-30:].max()
-            report['today_data'] = df.ix[-1]
+            report['today_data'] = df.iloc[-1]
             report['best_banks'] = get_low_currency_price_banks(self.currency)
             self.report = report
         else:
