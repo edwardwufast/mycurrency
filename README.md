@@ -29,6 +29,8 @@ OSERROR: -1728
 ```
 You have to allow the program to access excell file first by click 'yes' when excel ask you.
 
+If you get no aem module error, try reinstall appscript.
+
 2. Provide suggestion to buy or sell your currency.
 ```
 suggest <currency>
