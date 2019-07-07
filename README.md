@@ -19,7 +19,7 @@ For example:
 ```
 update_currency -e my.xlxs -c JPY USD CHF
 ```
-![alt text](https://www.dropbox.com/s/7m76n1gn8kkkzm5/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96%202019-07-07%2017.29.04.png?dl=0)
+Excel result example: https://www.dropbox.com/s/7m76n1gn8kkkzm5/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96%202019-07-07%2017.29.04.png?dl=0
 
 If you get error like:
 
