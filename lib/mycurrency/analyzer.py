@@ -9,9 +9,9 @@ from bs4 import BeautifulSoup
 from html_table_extractor.extractor import Extractor
 
 config = configparser.ConfigParser()
-base_path = Path(__file__).parent
-file_path = (base_path / "../../mycurrency.config").resolve()
-config.read(file_path)
+#base_path = Path(__file__).parent
+#file_path = (base_path / "../../mycurrency.config").resolve()
+config.read('/etc/mycurrency/mycurrency.config')
 
 TOKEN = config['default']['line_token']
 
