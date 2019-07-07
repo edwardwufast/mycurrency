@@ -50,3 +50,6 @@ For example:
 ```
 bestbank JPY
 ```
+# requirement
+
+python 3.7
